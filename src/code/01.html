@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01</title>
+    <style>
+        table {
+            text-align: center;
+            border-collapse: collapse;
+            margin: auto;
+        }
+
+        table thead {
+            background-color: #cccccc;
+        }
+
+        th,
+        td {
+            padding: 10px 65px;
+            border: 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+
+    1、动态生成表格
+    <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <td>张三</td>
+                <td>JavaScript</td>
+                <td>99</td>
+                <td><a href="#">删除</a></td>
+            </tr>
+            <tr></tr> -->
+        </tbody>
+    </table>
+
+    <script>
+        let data = [
+            {
+                name: '张三',
+                project: '母猪的产后护理',
+                score: 100
+            },
+            {
+                name: '明玉',
+                project: '斗罗大陆',
+                score: 19
+            },
+            {
+                name: '王林',
+                project: '仙逆',
+                score: 100
+            },
+            {
+                name: '赵六',
+                project: 'Node.js',
+                score: 77
+            },
+            {
+                name: '齐静春',
+                project: '剑来',
+                score: 99
+            }
+        ]
+
+        let tbodyNode = document.querySelector('tbody')
+        let htmlStr = ''
+        for (let i = 0; i < data.length; i++) {
+            htmlStr += `
+             <tr>
+                <td>${data[i].name}</td>
+                <td>${data[i].project}</td>
+                <td>${data[i].score}</td>
+                <td><a href="#">删除</a></td>
+             </tr>
+            `
+        }
+        tbodyNode.innerHTML = htmlStr
+        let trNode = document.querySelectorAll('tbody tr')
+        for (let i = 0; i < trNode.length; i++) {
+            trNode[i].addEventListener('click', function (e) {
+                e.preventDefault()
+                if (e.target.tagName === 'A') {
+                    tbodyNode.removeChild(this)
+                }
+            })
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

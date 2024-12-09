@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 100px;
+            background-color: antiquewhite;
+            margin: auto;
+        }
+
+        .heart {
+            display: flex;
+            width: 100%;
+            height: 50px;
+            cursor: pointer;
+        }
+
+        .heart span {
+            flex: 1;
+            text-align: center;
+            line-height: 50px;
+        }
+        
+        .comment {
+            width: 100%;
+            text-align: center;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+    2、点评
+    循环创建n颗❤
+    添加到页面中，点击第n颗
+    它及左边的❤都变 红，并给出相应的评语，它右边的❤为黑
+
+    <div class="box">
+        <div class="heart"></div>
+        <div class="comment"></div>
+    </div>
+    <script>
+        let heart = document.querySelector('.heart')
+        let comment = document.querySelector('.comment')
+        for (let i = 0; i < 5; i++) {
+            let heartSpan = document.createElement('span')
+            heartSpan.innerHTML = '❤'
+            heart.appendChild(heartSpan)
+        }
+
+        let heartSpans = document.querySelectorAll('.heart span')
+        console.log(heartSpans);
+        for (let k = 0; k < heartSpans.length; k++) {
+            heartSpans[k].addEventListener('click', function (e) {
+                switch (k) {
+                    case 0:
+                    case 1:
+                        comment.innerHTML = '差'
+                        break
+                    case 2:
+                        comment.innerHTML = '中'
+                        break
+                    case 3:
+                        comment.innerHTML = '良好'
+                        break
+                    case 4:
+                        comment.innerHTML = '优秀'
+                        break
+                }
+                for (let n = 0; n <= k; n++) {
+                    heartSpans[n].style.color = 'red'
+                }
+                for (let m = k + 1; m < heartSpans.length; m++) {
+                    heartSpans[m].style.color = 'black'
+                }
+            })
+        }
+
+
+    </script>
+</body>
+
+</html>

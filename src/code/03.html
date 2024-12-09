@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03</title>
+    <style>
+        .form {
+            display: flex;
+            align-items: center;
+            height: 100px;
+        }
+
+        input {
+            width: 200px;
+            height: 30px;
+            margin-right: 10px;
+            text-indent: 10px;
+            outline: none;
+            border: 1px solid #666;
+        }
+
+        button {
+            display: inline-block;
+            height: 30px;
+            width: 80px;
+            line-height: 30px;
+            color: #fff;
+            border: none;
+            text-align: center;
+            background-color: #0088c3;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    3、输入框内容显示和隐藏(加强训练)
+    <div class="form">
+        <input type="text" placeholder="邮箱/ID/手机号">
+        <input type="password" placeholder="密码">
+        <button type="submit">登录</button>
+    </div>
+    <script>
+
+        const form = document.querySelector('.form')
+        let inputs = document.querySelectorAll('input')
+        form.addEventListener('focus', function (e) {
+            if (e.target.tagName === 'INPUT') {
+                e.target.placeholder = ''
+                e.target.style.borderColor = 'red'
+            }
+        }, true)
+        
+        for (let i = 0; i < inputs.length; i++) {
+            let flag = inputs[i].value.length > 0
+            inputs[i].addEventListener('click', function (e) {
+                if (i === 0) {
+                    if (flag) {
+                        this.style.borderColor = 'skyblue'
+                    } else {
+                        this.placeholder = '邮箱/ID/手机号'
+                        this.style.borderColor = 'skyblue'
+                    }
+                } else if (i === 1) {
+                    if (flag) {
+                        this.style.borderColor = 'skyblue'
+                    } else {
+                        this.placeholder = '密码'
+                        this.style.borderColor = 'skyblue'
+                    }
+                }
+            })
+        }
+
+    </script>
+</body>
+
+</html>

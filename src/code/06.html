@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06</title>
+    <style>
+        .box {
+            width: 750px;
+            height: 450px;
+            margin: auto;
+        }
+
+        .top {
+            display: block;
+            margin: auto;
+            width: 460px;
+            height: 320px;
+            background-color: tan;
+        }
+
+        .imgList {
+            display: flex;
+            justify-content: center;
+        }
+
+        .imgList img {
+            width: 100px;
+            margin: 10px 10px 0;
+            border: 2px solid #666;
+            height: 75px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    06、点击小图换大图
+    <div class="box">
+        <img class="top" src="/src/assets/img/1.jpeg" alt="">
+        <div class="imgList">
+            <img src="/src/assets/img/1.jpeg" alt="">
+            <img src="/src/assets/img/2.jpeg" alt="">
+            <img src="/src/assets/img/3.jpeg" alt="">
+        </div>
+    </div>
+    <script>
+        let topImg = document.querySelector('.top')
+        let imgList = document.querySelectorAll('.imgList img')
+        console.log(imgList);
+
+        // 排他思想！！！
+        for (var i = 0; i < imgList.length; i++) {
+            imgList[i].addEventListener('click', function () {
+                // (1) 先把所有的按钮背景颜色去掉
+                for (var j = 0; j < imgList.length; j++) {
+                    imgList[j].style.transform = "scale(1)";
+                }
+                this.style.transform = "scale(1.2)";
+                topImg.src = this.src
+                // (2) 然后才让当前的元素背景颜色为pink
+            })
+        }
+
+
+    </script>
+
+</body>
+
+</html>

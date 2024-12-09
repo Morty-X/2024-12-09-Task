@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07</title>
+    <style>
+        #textContent {
+            width: 200px;
+            height: 200px;
+            resize: none;
+            outline: none;
+        }
+
+        .msgBoard li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 40px;
+            width: 400px;
+            background-color: #0c8e80;
+            border-bottom: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    7、发布留言与删除留言
+    <div class="box">
+        <textarea name="text" id="textContent"></textarea>
+        <button class="publish">发布</button>
+        <button class="delAll">删除所有留言</button>
+        <ul class="msgBoard">
+            <li>123<button>删除按钮</button></li>
+            <li>123<button>删除按钮</button></li>
+            <li>123<button>删除按钮</button></li>
+            <li>123<button>删除按钮</button></li>
+        </ul>
+    </div>
+    <script>
+        let publish = document.querySelector('.publish')
+        let msgBoard = document.querySelector('.msgBoard')
+        let delAll = document.querySelector('.delAll')
+        publish.addEventListener('click', function () {
+            let textInput = document.querySelector('#textContent').value
+            let li = document.createElement('li')
+            li.innerHTML = `${textInput}<button>删除按钮</button>`
+            msgBoard.insertBefore(li, msgBoard.firstChild)
+            document.querySelector('#textContent').value = ''
+        })
+
+        msgBoard.addEventListener('click', function (e) {
+            let item = e.target
+            if (item.tagName === 'BUTTON') {
+                msgBoard.removeChild(item.parentNode)
+            }
+        })
+        delAll.addEventListener('click', function () {
+            msgBoard.innerHTML = ''
+        })
+
+    </script>
+
+</body>
+
+</html>

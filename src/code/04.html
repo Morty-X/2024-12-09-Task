@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04</title>
+    <style>
+        .box {
+            height: 400px;
+            background-color: pink;
+            margin: auto;
+        }
+
+        .box h2 {
+            margin: 0;
+            width: 100%;
+            height: 300px;
+            line-height: 300px;
+            text-align: center;
+        }
+
+        .select {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            height: 40px;
+        }
+
+        .select button {
+            margin: 0 10px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    04、出了个大新闻
+    <div class="box">
+        <h2 style="font-size: 40px;">出了个大新闻</h2>
+        <div class="select">
+            <button class="pad50">变大50px</button>
+            <button class="pad80">变大80px</button>
+        </div>
+    </div>
+    <script>
+        let select = document.querySelector('.select')
+        let h2 = document.querySelector('h2')
+        // 这里有一个坑！ 通过element.style.属性名的方式只能获取element的行内css样式
+        let fontSize = h2.style.fontSize
+        select.addEventListener('click', function (e) {
+            if (e.target.className === 'pad50') {
+                h2.style.fontSize = Number(fontSize.split('px').join('')) + 50 + 'px'
+            } else if (e.target.className === 'pad80') {
+                h2.style.fontSize = Number(fontSize.split('px').join('')) + 80 + 'px'
+            }
+        })
+    </script>
+</body>
+
+</html>

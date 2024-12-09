@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05</title>
+</head>
+
+<body>
+    5、仿京东显示密码<br>
+    <input type="password" placeholder="请输入密码"> <button>查看密码</button>
+    <script>
+        let input = document.querySelector('input')
+        let lookPsd = document.querySelector('button')
+        let flag = true
+        lookPsd.addEventListener('click', function (e) {
+            if (flag) {
+                input.type = 'text'
+                lookPsd.innerHTML = '隐藏'
+                flag = false
+            } else {
+                input.type = 'password'
+                lookPsd.innerHTML = '查看密码'
+                flag = true
+            }
+        })
+    </script>
+
+</body>
+
+</html>
