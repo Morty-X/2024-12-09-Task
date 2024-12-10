@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01表格渲染问题优化</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: auto;
+            text-align: center;
+        }
+
+        th,
+        td {
+            padding: 12px 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div data-abc="123"></div>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>张三</td>
+                <td>JavaScript</td>
+                <td>39</td>
+                <td><button>删除</button></td>
+            </tr>
+        </tbody>
+
+    </table>
+    <script>
+        let dataSource = [{
+            id: 1,
+            name: '张三',
+            project: '母猪的产后护理',
+            score: 100
+        },
+        {
+            id: 2,
+            name: '明玉',
+            project: '斗罗大陆',
+            score: 19
+        },
+        {
+            id: 3,
+            name: '王林',
+            project: '仙逆',
+            score: 100
+        },
+        {
+            id: 4,
+            name: '赵六',
+            project: 'Node.js',
+            score: 77
+        },
+        {
+            id: 5,
+            name: '齐静春',
+            project: '剑来',
+            score: 99
+        }]
+
+        let keys = ['name', 'project', 'score', 'action']
+
+        let tbody = document.querySelector('tbody')
+        tbody.addEventListener('click', function (e) {
+            if (e.target.tagName === 'BUTTON') {
+                e.target.parentNode.parentNode.remove()
+            }
+        })
+        for (let i = 0; i < dataSource.length; i++) {
+            let tr = document.createElement('tr')
+            for (let j = 0; j < keys.length; j++) {
+                let td = document.createElement('td')
+                let propName = keys[j]
+                let innerMessage = dataSource[i][propName]
+                td.innerHTML = innerMessage ? innerMessage : '<button>删除</button>'
+                tr.appendChild(td)
+            }
+            tbody.appendChild(tr)
+        }
+    </script>
+</body>
+
+</html>

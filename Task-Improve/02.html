@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02点亮红心逻辑优化</title>
+</head>
+
+<body>
+    <!-- 图标库 -->
+    <symbol style="display: none;">
+        <svg id="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path fill="currentColor" fill-rule="evenodd"
+                d="M12 20c-2.205-.48-9-4.24-9-11a5 5 0 0 1 9-3a5 5 0 0 1 9 3c0 6.76-6.795 10.52-9 11" />
+        </svg>
+    </symbol>
+    <div class="container">
+        <div>
+            <svg data-index="0" style="font-size: 100px;
+                width: 70px;
+                height: 70px;
+                background-color: pink;" viewBox="0 0 24 24">
+                <use href="#heart" />
+            </svg>
+            <svg data-index="1" style="font-size: 100px;
+                width: 70px;
+                height: 70px;
+                background-color: pink;" viewBox="0 0 24 24">
+                <use href="#heart" />
+            </svg>
+            <svg data-index="2" style="font-size: 100px;
+                width: 70px;
+                height: 70px;
+                background-color: pink;" viewBox="0 0 24 24">
+                <use href="#heart" />
+            </svg>
+            <svg data-index="3" style="font-size: 100px;
+                width: 70px;
+                height: 70px;
+                background-color: pink;" viewBox="0 0 24 24">
+                <use href="#heart" />
+            </svg>
+            <svg data-index="4" style="font-size: 100px;
+                width: 70px;
+                height: 70px;
+                background-color: pink;" viewBox="0 0 24 24">
+                <use href="#heart" />
+            </svg>
+            <div>xxx</div>
+        </div>
+
+    </div>
+    <script>
+        let hearts = document.querySelectorAll('.container svg')
+        let container = document.querySelector('.container')
+        container.addEventListener('click', function (e) {
+            console.log(e.target.tagName);
+            if (e.target.tagName === 'use') {
+                let index = parseInt(e.target.parentNode.dataset.index)
+                for (let i = 0; i < hearts.length; i++) {
+                    hearts[i].style.color = i <= index ? 'red' : 'black'
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>
